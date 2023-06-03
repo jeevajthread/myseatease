@@ -19,7 +19,7 @@ public class Seat {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="seatId")
-	private long setId;
+	private long seatId;
 	@Column(name="seatName")
 	private String seatName;
 	@Column(name="seatDescription")
@@ -39,14 +39,7 @@ public class Seat {
 		this.seatDescription = seatDescription;
 	}
 
-	public long getSetId() {
-		return setId;
-	}
-
-	public void setSetId(long setId) {
-		this.setId = setId;
-	}
-
+	
 	public String getSeatName() {
 		return seatName;
 	}
@@ -62,13 +55,7 @@ public class Seat {
 	public void setSeatDescription(String seatDescription) {
 		this.seatDescription = seatDescription;
 	}
-
-	public Seat(long setId, String seatName, String seatDescription) {
-		super();
-		this.setId = setId;
-		this.seatName = seatName;
-		this.seatDescription = seatDescription;
-	}
+	
 
 	public Room getRoom() {
 		return room;
@@ -78,7 +65,14 @@ public class Seat {
 		this.room = room;
 	}
 
+	public long getSeatId() {
+		return seatId;
+	}
+
+	public void setSeatId(long seatId) {
+		this.seatId = seatId;
+	}
+
 	
-	
-   
+	 
 }

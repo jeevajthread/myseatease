@@ -91,7 +91,7 @@ public class Exam {
 
 	
 	  public List<Student> getStudent() { 
-		  System.out.println("Called................");
+		//  System.out.println("Called................");
 		  return student; 
 		  }
 	 

@@ -44,7 +44,7 @@ public class Student {
 	@Column(name="active")
 	private boolean active;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
     @JoinColumn(name = "examId")
 	private Exam exam;
 	
@@ -133,14 +133,15 @@ public class Student {
 	}
 
 	
-	public boolean isActive() {
-		return active;
-	}
-
+	
 	public void setActive(boolean active) {
 		this.active = active;
 	}
 
+
+	public boolean isActive() {
+		return active;
+	}
 
 	public Exam getExam() {
 		return exam;
