@@ -43,7 +43,15 @@ public class Student {
 	
 	@Column(name="active")
 	private boolean active;
-	
+
+	@Column(name="feereceiptnumber")
+	private String feeReceiptNumber;
+
+	@ManyToOne
+	@JoinColumn(name="seatId")
+	private Seat seat;
+
+
 	@ManyToOne
     @JoinColumn(name = "examId")
 	private Exam exam;
@@ -66,6 +74,21 @@ public class Student {
 		this.exam = exam;
 	}
 
+	public String getFeeReceiptNumber() {
+		return feeReceiptNumber;
+	}
+
+	public void setFeeReceiptNumber(String feeReceiptNumber) {
+		this.feeReceiptNumber = feeReceiptNumber;
+	}
+
+	public Seat getSeat() {
+		return seat;
+	}
+
+	public void setSeat(Seat seat) {
+		this.seat = seat;
+	}
 
 
 	public long getStudentId() {
@@ -149,6 +172,13 @@ public class Student {
 
 	public void setExam(Exam exam) {
 		this.exam = exam;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", name=" + name + ", age=" + age + ", email=" + email + ", phoneNo="
+				+ phoneNo + ", semester=" + semester + ", userName=" + userName + ", password=" + password + ", active="
+				+ active + ", feeReceiptNumber=" + feeReceiptNumber + ", seat=" + seat + ", exam=" + exam + "]";
 	}
 	
 

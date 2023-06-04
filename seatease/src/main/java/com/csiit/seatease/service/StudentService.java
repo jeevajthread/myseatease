@@ -18,6 +18,7 @@ public interface StudentService {
     public Exam updateExam(long examId,Exam exam);
     public Student getStudentById(long studentId);
     public Student updateStudent(long studentId,Student student);
+    public Seat generateSeat(long examId);
     
     public void deleteExam(long examId);
     public void deleteStudent(long studentId);

@@ -1,5 +1,7 @@
 package com.csiit.seatease.entity;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +30,10 @@ public class Seat {
 	@ManyToOne
     @JoinColumn(name = "roomId")
 	private Room room;
+	
+	 @OneToMany( cascade=CascadeType.ALL) 
+	 private List<Student> student;
+
 		
 	public Seat() {
 		// TODO Auto-generated constructor stub
@@ -71,6 +77,21 @@ public class Seat {
 
 	public void setSeatId(long seatId) {
 		this.seatId = seatId;
+	}
+
+	
+	public List<Student> getStudent() {
+		return student;
+	}
+
+	public void setStudent(List<Student> student) {
+		this.student = student;
+	}
+
+	@Override
+	public String toString() {
+		return "Seat [seatId=" + seatId + ", seatName=" + seatName + ", seatDescription=" + seatDescription + ", room="
+				+ room + "]";
 	}
 
 	

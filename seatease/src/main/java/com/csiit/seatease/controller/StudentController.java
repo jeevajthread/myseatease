@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.csiit.seatease.dto.AuthenticationRequest;
 import com.csiit.seatease.entity.Admin;
 import com.csiit.seatease.entity.Exam;
+import com.csiit.seatease.entity.Seat;
 import com.csiit.seatease.entity.Student;
 import com.csiit.seatease.service.StudentService;
 
@@ -52,7 +53,16 @@ public class StudentController {
 	}
 	@GetMapping("/getStudentById/{studentId}")
 	public Student getStudentById(@PathVariable("studentId") long studentId) {
-		return studentService.getStudentById(studentId);
+		Student s = studentService.getStudentById(studentId);
+		System.out.println("STUDENT : "+s);
+		/*
+		 * if(s.getSeat()==null) { Seat seat = new Seat(); s.setSeat(seat); }
+		 */
+//		Seat seat = new Seat();
+//		s.setSeat(seat);
+//		System.out.println(s);
+		return s;
+		//return studentService.getStudentById(studentId);
 	}
 	@PutMapping("/updateStudent/{studentId}")
 	public Student updateStudent(@PathVariable("studentId") long studentId, @RequestBody Student student) {
@@ -72,6 +82,12 @@ public class StudentController {
 		Student dbStudent = studentService.authenticateStudent(student);
 		System.out.println(dbStudent.getStudentId()+"..........");
 		return dbStudent;
+	}
+
+	@GetMapping("/generateSeat/{examId}")
+	public Seat generateSeat(@PathVariable("examId") long examId) {
+		System.out.println(" generateSeat........");
+		return studentService.generateSeat(examId);
 	}
 	
 }

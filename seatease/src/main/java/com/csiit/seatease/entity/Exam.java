@@ -98,6 +98,12 @@ public class Exam {
 	  public void setStudent(List<Student> student) { 
 		  this.student = student; 
 		  }
+
+	@Override
+	public String toString() {
+		return "Exam [examId=" + examId + ", examCode=" + examCode + ", examName=" + examName + ", examFees=" + examFees
+				+ ", examDate=" + examDate + ", student=" + student + "]";
+	}
 	 
 
 	
