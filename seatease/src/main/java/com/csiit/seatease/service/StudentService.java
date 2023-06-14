@@ -22,6 +22,6 @@ public interface StudentService {
     
     public void deleteExam(long examId);
     public void deleteStudent(long studentId);
-    public Student authenticateStudent(AuthenticationRequest admin) ;
+//    public Student authenticateStudent(AuthenticationRequest admin) ;
   
 }

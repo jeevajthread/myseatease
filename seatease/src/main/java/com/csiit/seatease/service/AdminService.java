@@ -5,8 +5,9 @@ import com.csiit.seatease.entity.Admin;
 
 public interface AdminService {
 	
-	public Admin saveAdmin(Admin admin);
-	public Admin authenticateAdmin(AuthenticationRequest admin) ;
+	public String addNewAdmin(Admin admin);
+	//public Admin saveAdmin(Admin admin);
+	//public Admin authenticateAdmin(AuthenticationRequest admin) ;
 	
 		
 	

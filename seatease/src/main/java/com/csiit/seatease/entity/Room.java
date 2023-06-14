@@ -22,13 +22,15 @@ public class Room {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="roomId")
 	private long roomId;
+	
 	@Column(name="roomName")
 	private String roomName;
+	
 	@Column(name="roomDescription")
 	private String roomDescription;
 	
 	@OneToMany(  cascade=CascadeType.ALL)
-	private List<Seat> room;
+	private List<Seat> seat;
 	
 	@ManyToOne
     @JoinColumn(name = "floorId")
@@ -71,12 +73,12 @@ public class Room {
 
 	
 
-	public List<Seat> getRoom() {
-		return room;
+	public List<Seat> getSeat() {
+		return seat;
 	}
 
-	public void setRoom(List<Seat> room) {
-		this.room = room;
+	public void setSeat(List<Seat> seat) {
+		this.seat = seat;
 	}
 
 	public Floor getFloor() {

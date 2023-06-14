@@ -2,9 +2,11 @@ package com.csiit.seatease.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.csiit.seatease.dto.AuthenticationRequest;
@@ -27,6 +29,9 @@ public class StudentServiceImpl implements StudentService {
 	@Autowired
 	private SeatRepository seatRepository;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	@Override
 	public Exam saveExam(Exam exam) {
 		return examRepository.save(exam);
@@ -34,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student saveStudent(long examId, Student student) {
-
+		student.setPassword(passwordEncoder.encode(student.getPassword()));
 		Exam exam = examRepository.findById(examId).get();
 		student.setExam(exam);
 		return studentRepository.save(student);
@@ -68,6 +73,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student getStudentById(long studentId) {
+		System.out.println("studentId: "+studentId);
 		Student s = studentRepository.findById(studentId).get();
 		System.out.println("Here... "+s);
 		return s;
@@ -98,16 +104,15 @@ public class StudentServiceImpl implements StudentService {
 		studentRepository.deleteById(studentId);
 	}
 
-	@Override
-	public Student authenticateStudent(AuthenticationRequest student) {
-		Student dbStudent = studentRepository.findByUserName(student.getUsername());
-		if (dbStudent != null && dbStudent.getPassword().equals(student.getPassword())) {
-			return dbStudent;
-		}
-		return null;
-
-	}
-
+	/*
+	 * @Override public Student authenticateStudent(AuthenticationRequest student) {
+	 * Optional<Student> dbStudent =
+	 * studentRepository.findByUserName(student.getUsername()); if (dbStudent !=
+	 * null && dbStudent.getPassword().equals(student.getPassword())) { return
+	 * dbStudent; } return null;
+	 * 
+	 * }
+	 */
 	@Override
 	public Seat generateSeat(long examId) {
 		List<Seat> seats = seatRepository.findAll();

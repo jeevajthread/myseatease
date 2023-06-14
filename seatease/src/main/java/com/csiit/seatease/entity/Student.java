@@ -35,7 +35,7 @@ public class Student {
 	@Column(name="semester")
 	private String semester;
 	
-	@Column(name="userName")
+	@Column(name="userName",unique = true)
 	private String userName;
 	
 	@Column(name="password")
@@ -56,6 +56,9 @@ public class Student {
     @JoinColumn(name = "examId")
 	private Exam exam;
 	
+	@Column(name="roles")
+	private String roles;
+
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
@@ -173,13 +176,23 @@ public class Student {
 	public void setExam(Exam exam) {
 		this.exam = exam;
 	}
+	
+		public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
 
 	@Override
 	public String toString() {
 		return "Student [studentId=" + studentId + ", name=" + name + ", age=" + age + ", email=" + email + ", phoneNo="
 				+ phoneNo + ", semester=" + semester + ", userName=" + userName + ", password=" + password + ", active="
-				+ active + ", feeReceiptNumber=" + feeReceiptNumber + ", seat=" + seat + ", exam=" + exam + "]";
+				+ active + ", feeReceiptNumber=" + feeReceiptNumber + ", seat=" + seat + ", exam=" + exam + ", roles="
+				+ roles + "]";
 	}
+
 	
 
 }

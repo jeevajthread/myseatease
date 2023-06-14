@@ -19,10 +19,14 @@ public class Admin {
 	private String adminName;
 	
 	@Column(name="username")
-	private String username;
+	private String userName;
 	
 	@Column(name="password")
 	private String password;
+
+	@Column(name="roles")
+	private String roles;
+
 	public Admin() {
 		// TODO Auto-generated constructor stub
 	}
@@ -39,17 +43,24 @@ public class Admin {
 		this.adminName = adminName;
 	}
 	
-	public String getUsername() {
-		return username;
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRoles() {
+		return roles;
+	}
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 	
 

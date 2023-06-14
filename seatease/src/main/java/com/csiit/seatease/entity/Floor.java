@@ -22,8 +22,10 @@ public class Floor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "floorId")
 	private long floorId;
+	
 	@Column(name = "floorName")
 	private String floorName;
+	
 	@Column(name = "floorDescription")
 	private String floorDescription;
 	
